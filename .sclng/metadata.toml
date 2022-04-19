@@ -1,0 +1,8 @@
+version = "1.0.0"
+owner = "etienne@scalingo.com"
+team = "IST"
+description = "Buildpack that installs the Jemalloc memory allocator"
+languages = ["shell"]
+destination_server = []
+flags = ["buildpack"]
+dependencies = []
