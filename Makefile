@@ -1,4 +1,4 @@
-default: scalingo-14 scalingo-18 scalingo-20
+default: scalingo-18 scalingo-20
 
 VERSION := 5.3.0
 ROOT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -24,12 +24,7 @@ src/jemalloc-%.tar.bz2:
 	mkdir -p $$(dirname $@)
 	curl -fsL https://github.com/jemalloc/jemalloc/releases/download/$*/jemalloc-$*.tar.bz2 -o $@
 
-.PHONY: scalingo-14 scalingo-18 scalingo-20
-
-# Build for scalingo stack
-scalingo-14: src/jemalloc-$(VERSION).tar.bz2
-	docker run --pull=always --rm -it --volume="$(ROOT_DIR):/wrk" \
-		scalingo/scalingo-14:latest /wrk/build.sh $(VERSION) scalingo-14
+.PHONY: scalingo-18 scalingo-20
 
 # Build for scalingo-18 stack
 scalingo-18: src/jemalloc-$(VERSION).tar.bz2
@@ -58,15 +53,15 @@ build-scalingo-20:
 
 # Build recent releases for all supported stacks
 build-all:
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=3.6.0
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.0.4
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.1.1
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.2.1
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.3.1
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.4.0
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=4.5.0
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.0.1
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.1.0
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.2.0
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.2.1
-	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.3.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=3.6.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.0.4
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.1.1
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.2.1
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.3.1
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.4.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=4.5.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=5.0.1
+	$(MAKE) scalingo-18 scalingo-20 VERSION=5.1.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=5.2.0
+	$(MAKE) scalingo-18 scalingo-20 VERSION=5.2.1
+	$(MAKE) scalingo-18 scalingo-20 VERSION=5.3.0
