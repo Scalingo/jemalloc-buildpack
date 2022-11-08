@@ -76,13 +76,13 @@ Set this to select or pin to a specific version of jemalloc. The default is to
 use the latest stable version if this is not set. You will receive an error
 mentioning tar if the version does not exist.
 
-**Default**: `5.2.1`
+**Default**: `5.3.0`
 
 **note:** This setting is only used during slug compilation. Changing it will
 require a code change to be deployed in order to take affect.
 
 ```shell
-scalingo env-set JEMALLOC_VERSION=3.6.0
+scalingo env-set JEMALLOC_VERSION=5.2.1
 ```
 
 #### Available Versions
@@ -100,17 +100,18 @@ scalingo env-set JEMALLOC_VERSION=3.6.0
 | [5.1.0](https://github.com/jemalloc/jemalloc/releases/tag/5.1.0) | 2018-05-08 |
 | [5.2.0](https://github.com/jemalloc/jemalloc/releases/tag/5.2.0) | 2019-04-02 |
 | [5.2.1](https://github.com/jemalloc/jemalloc/releases/tag/5.2.1) | 2019-08-05 |
+| [5.3.0](https://github.com/jemalloc/jemalloc/releases/tag/5.3.0) | 2022-05-06 |
 
 The complete and most up to date list of supported versions and stacks is
-available on the [releases page.](https://github.com/Scalingo/jemalloc-buildpack/releases)
+available on the [releases page](https://github.com/Scalingo/jemalloc-buildpack/releases).
 
 ## Building
 
 This uses Docker to build against Scalingo
-[stack-image](https://doc.scalingo.com/platform/internals/base-docker-image#top-of-page)-like images.
+[stack-image](https://doc.scalingo.com/platform/internals/stacks/stacks)-like images.
 
 ```shell
-make VERSION=5.2.1
+make VERSION=5.3.0
 ```
 
 Artifacts will be dropped in `dist/` based on Scalingo stack and jemalloc version.
