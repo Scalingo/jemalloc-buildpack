@@ -1,6 +1,6 @@
 default: scalingo-14 scalingo-18 scalingo-20
 
-VERSION := 5.2.1
+VERSION := 5.3.0
 ROOT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 
 clean:
@@ -10,7 +10,7 @@ console:
 	@echo "Console Help"
 	@echo
 	@echo "Specify a verion to install:"
-	@echo "    echo 5.2.1 > /env/JEMALLOC_VERSION"
+	@echo "    echo 5.3.0 > /env/JEMALLOC_VERSION"
 	@echo
 	@echo "To vendor jemalloc:"
 	@echo "    bin/compile /app/ /cache/ /env/"
@@ -54,6 +54,7 @@ build-scalingo-20:
 	$(MAKE) scalingo-20 VERSION=5.1.0
 	$(MAKE) scalingo-20 VERSION=5.2.0
 	$(MAKE) scalingo-20 VERSION=5.2.1
+	$(MAKE) scalingo-20 VERSION=5.3.0
 
 # Build recent releases for all supported stacks
 build-all:
@@ -68,3 +69,4 @@ build-all:
 	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.1.0
 	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.2.0
 	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.2.1
+	$(MAKE) scalingo-14 scalingo-18 scalingo-20 VERSION=5.3.0
