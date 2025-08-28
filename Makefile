@@ -1,4 +1,4 @@
-default: scalingo-20 scalingo-22
+default: scalingo-20 scalingo-22 scalingo-24
 
 VERSION := 5.3.0
 ROOT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -36,6 +36,17 @@ scalingo-22: src/jemalloc-$(VERSION).tar.bz2
 	docker run --pull=always --rm -it --volume="$(ROOT_DIR):/wrk" \
 		scalingo/scalingo-22:latest /wrk/build.sh $(VERSION) scalingo-22
 
+# Build for scalingo-24 stack
+scalingo-24: src/jemalloc-$(VERSION).tar.bz2
+	docker run --pull=always --rm -it --volume="$(ROOT_DIR):/wrk" \
+		scalingo/scalingo-24:latest /wrk/build.sh $(VERSION) scalingo-24
+
+# Build recent releases for scalingo-24 stack
+build-scalingo-24:
+	$(MAKE) scalingo-24 VERSION=3.6.0
+	$(MAKE) scalingo-24 VERSION=4.5.0
+	$(MAKE) scalingo-24 VERSION=5.3.0
+
 # Build recent releases for scalingo-22 stack
 build-scalingo-22:
 	$(MAKE) scalingo-22 VERSION=3.6.0
@@ -68,15 +79,15 @@ build-scalingo-20:
 
 # Build recent releases for all supported stacks
 build-all:
-	$(MAKE) scalingo-20 scalingo-22 VERSION=3.6.0
+	$(MAKE) scalingo-20 scalingo-22 scalingo-24 VERSION=3.6.0
 	$(MAKE) scalingo-20 scalingo-22 VERSION=4.0.4
 	$(MAKE) scalingo-20 scalingo-22 VERSION=4.1.1
 	$(MAKE) scalingo-20 scalingo-22 VERSION=4.2.1
 	$(MAKE) scalingo-20 scalingo-22 VERSION=4.3.1
 	$(MAKE) scalingo-20 scalingo-22 VERSION=4.4.0
-	$(MAKE) scalingo-20 scalingo-22 VERSION=4.5.0
+	$(MAKE) scalingo-20 scalingo-22 scalingo-24 VERSION=4.5.0
 	$(MAKE) scalingo-20 scalingo-22 VERSION=5.0.1
 	$(MAKE) scalingo-20 scalingo-22 VERSION=5.1.0
 	$(MAKE) scalingo-20 scalingo-22 VERSION=5.2.0
 	$(MAKE) scalingo-20 scalingo-22 VERSION=5.2.1
-	$(MAKE) scalingo-20 scalingo-22 VERSION=5.3.0
+	$(MAKE) scalingo-20 scalingo-22 scalingo-24 VERSION=5.3.0
