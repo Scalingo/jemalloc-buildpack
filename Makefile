@@ -1,6 +1,6 @@
 default: scalingo-22 scalingo-24 scalingo-26
 
-VERSION := 5.3.1
+VERSION := 5.4.0
 ROOT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 
 clean:
