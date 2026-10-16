@@ -10,7 +10,7 @@ console:
 	@echo "Console Help"
 	@echo
 	@echo "Specify a version to install:"
-	@echo "    echo 5.3.1 > /env/JEMALLOC_VERSION"
+	@echo "    echo 5.4.0 > /env/JEMALLOC_VERSION"
 	@echo
 	@echo "To vendor jemalloc:"
 	@echo "    bin/compile /app/ /cache/ /env/"
@@ -44,6 +44,7 @@ scalingo-26: src/jemalloc-$(VERSION).tar.bz2
 # Build recent releases for scalingo-26 stack
 build-scalingo-26:
 	$(MAKE) scalingo-26 VERSION=5.3.1
+	$(MAKE) scalingo-26 VERSION=5.4.0
 
 # Build recent releases for scalingo-24 stack
 build-scalingo-24:
@@ -51,6 +52,7 @@ build-scalingo-24:
 	$(MAKE) scalingo-24 VERSION=4.5.0
 	$(MAKE) scalingo-24 VERSION=5.3.0
 	$(MAKE) scalingo-24 VERSION=5.3.1
+	$(MAKE) scalingo-24 VERSION=5.4.0
 
 # Build recent releases for scalingo-22 stack
 build-scalingo-22:
@@ -67,6 +69,7 @@ build-scalingo-22:
 	$(MAKE) scalingo-22 VERSION=5.2.1
 	$(MAKE) scalingo-22 VERSION=5.3.0
 	$(MAKE) scalingo-22 VERSION=5.3.1
+	$(MAKE) scalingo-22 VERSION=5.4.0
 
 # Build recent releases for all supported stacks
 build-all:
@@ -83,3 +86,4 @@ build-all:
 	$(MAKE) scalingo-22 VERSION=5.2.1
 	$(MAKE) scalingo-22 scalingo-24 VERSION=5.3.0
 	$(MAKE) scalingo-22 scalingo-24 scalingo-26 VERSION=5.3.1
+	$(MAKE) scalingo-22 scalingo-24 scalingo-26 VERSION=5.4.0
